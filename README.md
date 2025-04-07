@@ -50,11 +50,11 @@ Run the script from PowerShell like so:
 
 ```powershell
 .\CWConfigContactUpdater.ps1 `
-  -CWCompanyId "lookup" `
+  -CWCompanyId "yourcompanyID" `
   -PublicKey "your_public_key" `
   -PrivateKey "your_private_key" `
   -ClientId "your_client_id" `
-  -CompanyId "ZWF" `
+  -CompanyId "customercompanyID" `
   -Site "https://api-au.myconnectwise.net" `
   [-ApiVersion "2024.4"] `
   [-BypassBaseUrlCheck]
