@@ -28,10 +28,15 @@ The script performs the following steps:
 - Queries the ConnectWise API to get **all** company contacts (with paging support).
 - Saves to: `step4a_company_contacts.csv`.
 
-### **Step 4B – Match Contacts Based on Last Login**
-- Attempts to guess contact based on `lastLoginName` using casing rules.
-- Compares guessed names against real contacts from Step 4A.
-- Outputs a comparison file: `step4b_contact_guess.csv`.
+### **Step 4B – Match Contacts Based on Last Login
+- Extracts the username from the lastLoginName field (e.g., from DOMAIN\JaneSmith → JaneSmith).
+- Uses casing patterns to split the username into first and last names (JaneSmith → Jane Smith).
+- Constructs a guessed full name based on this logic.
+- Compares the guessed name with the contact names retrieved in Step 4A.
+- Flags each configuration with:
+	- matched – whether the guessed name matches the currently assigned contact.
+	- exists – whether the guessed name exists in the known contact list.
+- Saves results to: `step4b_contact_guess.csv`.
 
 ### **Step 5 – Update Configurations (Where Needed)**
 - For unmatched configurations that have a valid contact match:
